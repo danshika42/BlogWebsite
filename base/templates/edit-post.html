@@ -1,0 +1,17 @@
+{% extends 'main.html' %} 
+
+{% block title %} 
+EDit Post
+{% endblock %} 
+
+{% block content %}
+
+    <div class="list-group container-sm">
+        <h1 class="display-6">Edit Blog</h1><br>
+        <form method="post">
+        {% csrf_token %}
+            {{form.as_p}}
+        <button class="btn btn-secondary">Edit</button>
+    </div>
+
+{% endblock %}

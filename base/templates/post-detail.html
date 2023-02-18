@@ -1,0 +1,22 @@
+{% extends 'main.html' %} 
+
+{% block title %} 
+{{postmodel.title_tag}}
+{% endblock %} 
+
+{% block content %}
+
+    <div class="list-group container-sm">
+        <h1 class="display-6">Blog</h1><br>
+        <div class="list-group-item-action">
+        <div class="d-flex w-100 justify-content-between">
+            <h4 class="mb-1">{{postmodel.title}}</h4><br>
+            <small>{{postmodel.post_date}}</small>
+        </div>
+        <p>by- <strong>{{postmodel.author}}</strong></p>
+        <p class="mb-1">{{postmodel.body}}</p><br>
+        <a href="{% url 'home' %}" class="btn btn-secondary">Back</a>
+        </div>
+    </div>
+
+{% endblock %}

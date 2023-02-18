@@ -1,22 +1,27 @@
-{% extends 'main.html' %}
+{% extends 'main.html' %} 
 
 {% block title%}
-    Home
-{% endblock%}
+ Home 
+{% endblock%} 
 
 {% block content %}
-<div class="list-group container-sm">
-    <h1 class="display-4">Blogs</h1><br>
-    {% for post in object_list %}
-        <a href="#" class="list-group-item list-group-item-action" >
-          <div class="d-flex w-100 justify-content-between">
-            <h4 class="mb-1">{{post.title}}</h4>
-            <small>{{post.post_date}}</small>
-        </div>
-          <p>by-{{post.author}}</p>
-          <p class="mb-1">{{post.body}}</p>
-        </a> <br>
-        {% endfor%}
-    </div>
-{% endblock content %}
 
+<div class="list-group container-sm">
+  <h1 class="display-4">Blogs</h1>
+  <br />
+  {% for post in object_list %}
+  <div class="list-group-item-action">
+    <div class="d-flex w-100 justify-content-between">
+        <a href="{% url 'article' post.pk %}"><h4 class="mb-1">{{post.title}}</h4></a>
+        <br><br>
+      <small>{{post.post_date}}</small>
+    </div>
+    <p>by- <strong>{{post.author}}</strong></p>
+    <p class="mb-1">{{post.body}}</p><br>
+    <a class="btn btn-primary" href="{% url 'edit-post' post.pk %}">Edit</a>&nbsp;&nbsp;
+    <a class="btn btn-danger" href="{% url 'delete-post' post.pk %}">Delete</a><br><br>
+  </div>
+  <br />
+  {% endfor%}
+</div>
+{% endblock content %}
